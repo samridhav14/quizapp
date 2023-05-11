@@ -26,11 +26,17 @@ class MyApp extends StatelessWidget {
               child: const Text('Option 1'),
             ),
             ElevatedButton(
-              onPressed: ansquestion,
+              onPressed: (){
+                // here we have used annonymous function because this function will not be called from anywhere else
+                print('ans 2 choosen');
+              },
               child:const Text('Option 2'),
             ),
             ElevatedButton(
-              onPressed: ansquestion,
+              onPressed: (){
+                // it is another way of rpresenting the refrence of function thing both will gave simmilar output
+                print('ans 3 choosen');
+              },
               child:const Text('Option 3'),
             ),
           ],
