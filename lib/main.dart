@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './question.dart';
 // void main(){
 //   runApp(MyApp());
 // }
@@ -39,7 +40,7 @@ class _MyAppState extends State<MyApp> {
         // body: Text('this is my default setup')),
         body: Column(
           children: [
-            Text(questions[_questionIndex]),
+            Question(questions[_questionIndex]),
             ElevatedButton(
               onPressed:
                   _ansquestion, // here we are passing refrence istead of function so that it get executed when button is pressed
