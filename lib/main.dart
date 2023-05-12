@@ -9,26 +9,24 @@ class MyApp extends StatefulWidget {
   // const MyApp({super.key});
   @override
   State<MyApp> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
   // State<MyApp> createState() => _MyAppState();
 }
 
 // we have two class because when the external data changes Myapp class can be recreated how ever state is persistent it is connected to myapp class but technically it is not recreated just the widget tree is rebuilt
-class MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> {
   //widgetname+state
-  var questionIndex = 0;
+  var _questionIndex = 0;
+   void _ansquestion() {
+      print(_questionIndex);
+      setState(() {
+        _questionIndex = _questionIndex + 1;
+      });
+    }
   @override //its a decorator its there to make code cleaner here over
   // ride basically means we delibrately over riding build
   Widget build(BuildContext context) {
-    void ansquestion() {
-      print(questionIndex);
-      setState(() {
-        questionIndex = questionIndex + 1;
-        print(questionIndex);
-      });
-    }
-
     var questions = [
       'Who is better cheems or dogesh',
       'Which company\'s shoes vimdhayak ji have?'
@@ -41,14 +39,14 @@ class MyAppState extends State<MyApp> {
         // body: Text('this is my default setup')),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            Text(questions[_questionIndex]),
             ElevatedButton(
               onPressed:
-                  ansquestion, // here we are passing refrence istead of function so that it get executed when button is pressed
+                  _ansquestion, // here we are passing refrence istead of function so that it get executed when button is pressed
               child: const Text('Option 1'),
             ),
             ElevatedButton(
-              onPressed: ansquestion //() {
+              onPressed: _ansquestion //() {
               //   // here we have used annonymous function because this function will not be called from anywhere else
               //   ansquestion;
               // }
@@ -56,7 +54,7 @@ class MyAppState extends State<MyApp> {
               child: const Text('Option 2'),
             ),
             ElevatedButton(
-              onPressed: ansquestion
+              onPressed: _ansquestion
               //() {
               // it is another way of rpresenting the refrence of function thing both will gave simmilar output
               // ansquestion;
