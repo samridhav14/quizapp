@@ -9,12 +9,12 @@ class Question extends StatelessWidget {
     // here this get rebuild everythime the data that is coming from main.dart changes hence statelesswidgets get rebuilt on input change thing is true
     return Container(
       width: double.infinity,
-     margin:EdgeInsets.all(10),
-    child:Text(
-      questionText,
-      style: TextStyle(fontSize: 24),
-     textAlign: TextAlign.center ,
-    ),);
+      margin: EdgeInsets.all(10),
+      child: Text(
+        questionText,
+        style: TextStyle(fontSize: 24),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }
-

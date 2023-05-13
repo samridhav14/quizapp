@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'ans.dart';
 import './question.dart';
 // void main(){
 //   runApp(MyApp());
@@ -41,28 +41,33 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(questions[_questionIndex]),
-            ElevatedButton(
-              onPressed:
-                  _ansquestion, // here we are passing refrence istead of function so that it get executed when button is pressed
-              child: const Text('Option 1'),
-            ),
-            ElevatedButton(
-              onPressed: _ansquestion //() {
-              //   // here we have used annonymous function because this function will not be called from anywhere else
-              //   ansquestion;
-              // }
-              ,
-              child: const Text('Option 2'),
-            ),
-            ElevatedButton(
-              onPressed: _ansquestion
-              //() {
-              // it is another way of rpresenting the refrence of function thing both will gave simmilar output
-              // ansquestion;
-              //}
-              ,
-              child: const Text('Option 3'),
-            ),
+            // ElevatedButton(
+            //   onPressed:
+            //       _ansquestion, // here we are passing refrence istead of function so that it get executed when button is pressed
+            //   child: const Text('Option 1'),
+            // ),
+            // ElevatedButton(
+            //   onPressed: _ansquestion //() {
+            //   //   // here we have used annonymous function because this function will not be called from anywhere else
+            //   //   ansquestion;
+            //   // }
+            //   ,
+            //   child: const Text('Option 2'),
+            // ),
+            // ElevatedButton(
+            //   onPressed: _ansquestion
+            //   //() {
+            //   // it is another way of rpresenting the refrence of function thing both will gave simmilar output
+            //   // ansquestion;
+            //   //}
+            //   ,
+            //   child: const Text('Option 3'),
+            // ),
+            // instead of writing buttons  here we have made an seprate file for them 
+            // to chanse the q index as we press options we need to pass refrence of our _ansquestion to ans file
+            Answer(_ansquestion),
+            Answer(_ansquestion),
+            Answer(_ansquestion),
           ],
         ),
       ),
