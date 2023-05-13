@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ans.dart';
 import './question.dart';
+
 // void main(){
 //   runApp(MyApp());
 // }
@@ -19,18 +20,30 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   //widgetname+state
   var _questionIndex = 0;
-   void _ansquestion() {
-      print(_questionIndex);
-      setState(() {
-        _questionIndex = _questionIndex + 1;
-      });
-    }
+  void _ansquestion() {
+    print(_questionIndex);
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+  }
+
   @override //its a decorator its there to make code cleaner here over
   // ride basically means we delibrately over riding build
   Widget build(BuildContext context) {
-    var questions = [
-      'Who is better cheems or dogesh',
-      'Which company\'s shoes vimdhayak ji have?'
+    List<Map<String, dynamic>> questions = [
+      // right now only question are there now use maps which is a key value data structure
+      {
+        'question': 'Who is better cheems or dogesh',
+        'answer': ['I love cheems', 'I love dogesh', 'Both are equal'],
+      },
+      {
+        'question': 'Which company\'s shoes vimdhayak ji have?',
+        'answer': ['nmike', 'poma', 'amdibas']
+      },
+      {
+        'question': 'who is more beautiful',
+        'answer': ['chimki', 'dogelina', 'vimdhayak\'s wife']
+      }
     ];
     return MaterialApp(
       home: Scaffold(
@@ -40,7 +53,9 @@ class _MyAppState extends State<MyApp> {
         // body: Text('this is my default setup')),
         body: Column(
           children: [
-            Question(questions[_questionIndex]),
+            Question(
+              questions[_questionIndex]['question'],
+            ),
             // ElevatedButton(
             //   onPressed:
             //       _ansquestion, // here we are passing refrence istead of function so that it get executed when button is pressed
@@ -63,12 +78,16 @@ class _MyAppState extends State<MyApp> {
             //   ,
             //   child: const Text('Option 3'),
             // ),
-            // instead of writing buttons  here we have made an seprate file for them 
+            // instead of writing buttons  here we have made an seprate file for them
             // to chanse the q index as we press options we need to pass refrence of our _ansquestion to ans file
-            Answer(_ansquestion),
-            Answer(_ansquestion),
-            Answer(_ansquestion),
-            //abc
+            ...(questions[_questionIndex]['answer'] as List<String>)
+                .map((answer) {
+              return Answer(_ansquestion, answer);
+            }).toList()
+
+            //Answer(_ansquestion),
+            // Answer(_ansquestion),
+            // Answer(_ansquestion),
           ],
         ),
       ),
