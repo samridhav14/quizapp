@@ -5,10 +5,10 @@ import './question.dart';
 // void main(){
 //   runApp(MyApp());
 // }
-void main() => runApp(MyApp()); // alternative way of writnig void main
+void main() => runApp(const MyApp()); // alternative way of writnig void main
 
 class MyApp extends StatefulWidget {
-  // const MyApp({super.key});
+   const MyApp({super.key});
   @override
   State<MyApp> createState() {
     return _MyAppState();
@@ -21,7 +21,6 @@ class _MyAppState extends State<MyApp> {
   //widgetname+state
   var _questionIndex = 0;
   void _ansquestion() {
-    print(_questionIndex);
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
@@ -30,7 +29,9 @@ class _MyAppState extends State<MyApp> {
   @override //its a decorator its there to make code cleaner here over
   // ride basically means we delibrately over riding build
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> questions = [
+    // here it is compile time constant a thing which is compile time contant is also run time constant
+ // we can add const before a value also but both of them are different if we riassign the variable it will work differently
+ const  List<Map<String, dynamic>> questions = [
       // right now only question are there now use maps which is a key value data structure
       {
         'question': 'Who is better cheems or dogesh',
@@ -45,10 +46,11 @@ class _MyAppState extends State<MyApp> {
         'answer': ['chimki', 'dogelina', 'vimdhayak\'s wife']
       }
     ];
+    // question =[]; this does not work
     return MaterialApp(
       home: Scaffold(
         // scaffold is given by flutter which helps us to include other widgets to get a basic structure
-        appBar: AppBar(title: const Text('My First App')),
+        appBar: AppBar(title: const Text('Cheems Quiz')),
         /* the problem with body is it cant have multiple widgets in it there for instead of multiple text we will use a column widget which will contain a list of widgets*/
         // body: Text('this is my default setup')),
         body: Column(
