@@ -39,9 +39,9 @@ class Quiz extends StatelessWidget {
             // ),
             // instead of writing buttons  here we have made an seprate file for them
             // to chanse the q index as we press options we need to pass refrence of our _ansquestion to ans file
-            ...(questions[questionindex]['answer'] as List<String>)
+            ...(questions[questionindex]['answer'] as List<Map<String,Object>>)
                 .map((answer) {
-              return Answer(ansquestion, answer);
+              return Answer(()=>ansquestion(answer['score']), answer['text'].toString());
             }).toList()
 
             //Answer(_ansquestion),
